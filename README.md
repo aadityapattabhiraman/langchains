@@ -77,3 +77,11 @@ Metadata from llm, also list token usage
 
 Reference: `https://python.langchain.com/docs/how_to/response_metadata/`  
 
+#### Multimodel data
+
+* Images base64, url
+* Pdf base64, url
+* Audio base64
+
+Reference: `https://python.langchain.com/docs/how_to/multimodal_inputs/`  
+
