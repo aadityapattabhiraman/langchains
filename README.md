@@ -57,4 +57,23 @@ Cool stuff, but dont see myself using that.
 Reference: `https://python.langchain.com/docs/how_to/custom_chat_model/`  
 Example: `./src/LangChain/chat_models/custom_chat_model.py`  
 
+#### Streaming
+
+Appears to user as if something is happening, cost is more than a normal one. I honestly dont care.  
+
+Reference: `https://python.langchain.com/docs/how_to/chat_streaming/`  
+
+#### Track Token usage
+
+Tracks the amount of token being used. `response.usage_metadata` works, but for detailed there are 2 methods:  
+* through configuration  
+* through context manager  
+
+Reference: `https://python.langchain.com/docs/how_to/chat_token_usage_tracking/`
+
+#### Response Metadata
+
+Metadata from llm, also list token usage
+
+Reference: `https://python.langchain.com/docs/how_to/response_metadata/`  
 
