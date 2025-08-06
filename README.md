@@ -85,3 +85,58 @@ Reference: `https://python.langchain.com/docs/how_to/response_metadata/`
 
 Reference: `https://python.langchain.com/docs/how_to/multimodal_inputs/`  
 
+### Messages
+
+#### Trimming
+All models have finite context windows, meaning there's a limit to how many tokens they can take as input. If you have very long messages or a chain/agent that accumulates a long message history, you'll need to manage the length of the messages you're passing in to the model.  
+```python
+from langchain_core.messages import (
+    AIMessage,
+    HumanMessage,
+    SystemMessage,
+    ToolMessage,
+    trim_messages,
+)
+from langchain_core.messages.utils import count_tokens_approximately
+
+messages = [
+    SystemMessage("you're a good assistant, you always respond with a joke."),
+    HumanMessage("i wonder why it's called langchain"),
+    AIMessage(
+        'Well, I guess they thought "WordRope" and "SentenceString" just didn\'t have the same ring to it!'
+    ),
+    HumanMessage("and who is harrison chasing anyways"),
+    AIMessage(
+        "Hmmm let me think.\n\nWhy, he's probably chasing after the last cup of coffee in the office!"
+    ),
+    HumanMessage("what do you call a speechless parrot"),
+]
+```
+
+* based on token count
+```python
+
+trim_messages(
+    messages,
+    strategy="last",
+    token_counter=count_tokens_approximately,
+    max_tokens=45,
+    start_on="human",
+    end_on=("human", "tool"),
+    include_system=True,
+    allow_partial=False,
+)
+```
+
+* based on message count
+```python
+trim_messages(
+    messages,
+    strategy="last",
+    token_counter=len,
+    max_tokens=5,
+    start_on="human",
+    end_on=("human", "tool"),
+    include_system=True,
+)
+```
