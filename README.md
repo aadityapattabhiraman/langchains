@@ -157,3 +157,12 @@ messages = [
 filter_messages(messages, exclude_names=["example_user", "example_assistant"])
 filter_messages(messages, include_types=[HumanMessage, AIMessage], exclude_ids=["3"])
 ```
+
+#### Merging
+
+Certain models do not support passing in consecutive messages if the same type.  
+`merge_message_runs` utility makes it easy to merge consecutive messages of the same type.  
+
+```python
+merged = merge_message_runs(messages)
+```
